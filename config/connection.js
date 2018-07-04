@@ -3,8 +3,11 @@ var connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
   password : '',
-  database : 'node_blog'
+  database : 'node_blog',
+  multipleStatements: true
 });
+// var connection = mysql.createConnection({multipleStatements: true});
+
 
 connection.connect(function(err) {
     if (err) throw err;

@@ -15,19 +15,34 @@ router.get('/', function(req, res, next) {
 
 // detail
 router.get('/view/:id', function(req, res, next) {
-  res.send('respond with a resource '+req.params.id);
+  	records = model.detail(req.params.id,function(result){
+  		res.render('categories/edit',{detail:result[0],data:result[1]});
+	});
 });
 
 // save
 router.post('/save', urlencodedParser, function(req, res, next) {
-	  if (!req.body) return res.sendStatus(400)
-  res.send('respond with a resource');
-  console.log(req.body.name);
+	if (!req.body) return res.redirect('/categories')
+	var data = { name : req.body.name, is_active:'1' };
+	save = model.save(data,function(result){
+		res.redirect('/categories');
+	});
 });
 
 // update
 router.post('/update/:id', function(req, res, next) {
-  res.send('respond with a resource');
+  	if (!req.body) return res.redirect('/categories')
+	var data = [req.body.name,(req.body.status=="on"?'1':'0'),req.params.id];
+	save = model.update(data,function(result){
+		res.redirect('/categories');
+	});
+});
+
+// delete
+router.get('/delete/:id', function(req, res, next) {
+  	records = model.delete(req.params.id,function(result){
+  		res.redirect('/categories');
+	});
 });
 
 module.exports = router;
