@@ -27,16 +27,25 @@
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Update Category</h3>
+              <h3 class="card-title">Update Username</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
               <!-- form start -->
-              <form role="form" method="post" action="/categories/update/<%= detail[0].id %>">
+              <form role="form" method="post" action="/users/update/<%= detail[0].id %>">
                 <div class="card-body">
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Category Name</label>
-                    <input type="text" class="form-control" placeholder="Enter New Category Name" name="name" required="" value="<%= detail[0].name %>">
+                    <label for="exampleInputEmail1">Username</label>
+                    <input type="text" class="form-control" placeholder="Enter New Username" name="username" required="" value="<%= detail[0].username %>">
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Password</label>
+                    <input type="password" class="form-control" placeholder="Enter New Username Name" name="password">
+                    <span class="text text-danger">
+                      <small> Leave empty if you dont want to change </small>
+                    </span>
                   </div>
                 </div>
                   <div class="form-group">
@@ -75,7 +84,7 @@
                 <thead>
                 <tr>
                   <th>No</th>
-                  <th>Category Name</th>
+                  <th>Username Name</th>
                   <th>Status</th>
                   <th>Action</th>
                 </tr>
@@ -87,18 +96,18 @@
                 			<%= (i+1) %>
                 		</td>
                 		<td>
-                      <%= data[i].name %>
+                      <%= data[i].username %>
                     </td>
                     <td>
                       <% if(data[i].is_active == 1){ %>
-                        <span class="text text-success fa  fa-2x fa-lock" title="Category is active"></span>
+                        <span class="text text-success fa  fa-2x fa-lock" title="Username is active"></span>
                       <% }else{ %> 
-                        <span class="text text-danger fa  fa-2x fa-unlock" title="Category is inactive"></span>
+                        <span class="text text-danger fa  fa-2x fa-unlock" title="Username is inactive"></span>
                       <% } %>
                     </td>
                     <td>
-                      <a href="/categories/view/<%= data[i].id %>" target="_blank" class="btn btn-warning"> <span class="text text-white fa fa-pencil"></span> </a>
-                      <a href="/categories/delete/<%= data[i].id %>" class="btn btn-danger" onclick="return confirmation();"> <span class="text text-white fa fa-trash" ></span> </a>
+                      <a href="/users/view/<%= data[i].id %>" target="_blank" class="btn btn-warning"> <span class="text text-white fa fa-pencil"></span> </a>
+                      <a href="/users/delete/<%= data[i].id %>" class="btn btn-danger" onclick="return confirmation();"> <span class="text text-white fa fa-trash" ></span> </a>
                     </td>
                   </tr>
                 	<% } %>
@@ -106,7 +115,7 @@
                 <tfoot>
                 <tr>
                   <th>No</th>
-                  <th>Category Name</th>
+                  <th>Username</th>
                   <th>Status</th>
                   <th>Action</th>
                </tr>

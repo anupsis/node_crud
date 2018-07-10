@@ -1,0 +1,95 @@
+<% include ../template/header.ejs %> 
+<% include ../template/sidebar.ejs %> 
+
+<!-- Select2 -->
+<link rel="stylesheet" href="../../adminlte/plugins/select2/select2.min.css">
+<!-- bootstrap wysihtml5 - text editor -->
+<link rel="stylesheet" href="../../adminlte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0 text-dark">Categories</h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="/">Home</a></li>
+              <li class="breadcrumb-item active">Categories</li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+   <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Add Category</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <!-- form start -->
+              <form role="form" method="post" action="/posts/save">
+                <div class="card-body">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Post Title</label>
+                    <input type="text" class="form-control" placeholder="Enter New Post Title" name="title" required="">
+                  </div>
+                  <div class="form-group">
+                    <label>Category Name</label>
+                    <select class="form-control select2" multiple="multiple" data-placeholder="Select a State" style="width: 100%;" name="categories">
+                        <% for(var i=0; i<data.length; i++) {%>
+                          <option value="<%= data[i].id %>"> <%= data[i].name %> </option>
+                        <%}%>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Post</label>
+                  <textarea class="form-control" placeholder="Enter New Post Content" name="posting" required=""></textarea>
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+              </form>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+      </div>
+      <!-- /.row -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+
+<% include ../template/footer.ejs %> 
+<!-- Select2 -->
+<script src="../../adminlte/plugins/select2/select2.full.min.js"></script>
+<!-- Bootstrap WYSIHTML5 -->
+<script src="../../adminlte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+
+<script>
+  $(function () {
+    $("select").select2();
+    $('textarea').wysihtml5({
+      toolbar: { fa: true }
+    })
+  });
+</script>

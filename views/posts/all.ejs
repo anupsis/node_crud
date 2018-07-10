@@ -27,39 +27,7 @@
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Add User</h3>
-            </div>
-            <!-- /.card-header -->
-            <div class="card-body">
-              <!-- form start -->
-              <form role="form" method="post" action="/users/save">
-                <div class="card-body">
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">User Name</label>
-                    <input type="text" class="form-control" placeholder="Enter New User Name" name="username" required="">
-                  </div>
-                </div>
-                <div class="card-body">
-                  <div class="form-group">
-                    <label for="exampleInputEmail2">Password</label>
-                    <input type="password" class="form-control" placeholder="Enter Password" name="password" required="">
-                  </div>
-                </div>
-                <!-- /.card-body -->
-                <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
-              </form>
-            </div>
-            <!-- /.card-body -->
-          </div>
-          <!-- /.card -->
-        </div>
-        <!-- /.col -->
-        <div class="col-12">
-          <div class="card">
-            <div class="card-header">
-              <h3 class="card-title">Users</h3>
+              <h3 class="card-title">Posts</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -67,8 +35,9 @@
                 <thead>
                 <tr>
                   <th>No</th>
-                  <th>User Name</th>
-                  <th>Status</th>
+                  <th>Title</th>
+                  <th>Categories</th>
+                  <th>Created</th>
                   <th>Action</th>
                 </tr>
                 </thead>
@@ -79,18 +48,17 @@
                 			<%= (i+1) %>
                 		</td>
                 		<td>
-                      <%= data[i].username %>
+                      <%= data[i].title %>
                     </td>
                     <td>
-                      <% if(data[i].is_active == '1'){ %>
-                        <span class="text text-success fa  fa-2x fa-lock" title="User is active"></span>
-                      <% }else{ %> 
-                        <span class="text text-danger fa fa-2x fa-unlock" title="User is inactive"></span>
-                      <% } %>
+                        <span class="bg bg-info " title="Posts Categories"> <%= data[i].categories %> </span>
                     </td>
                     <td>
-                      <a href="/users/view/<%= data[i].id %>" target="_blank" class="btn btn-warning"> <span class="text text-white fa fa-pencil"></span> </a>
-                      <a href="/users/delete/<%= data[i].id %>" class="btn btn-danger" onclick="return confirmation();"> <span class="text text-white fa fa-trash" ></span> </a>
+                      <%= data[i].created %>
+                    </td>
+                    <td>
+                      <a href="/posts/view/<%= data[i].id %>" target="_blank" class="btn btn-warning"> <span class="text text-white fa fa-pencil"></span> </a>
+                      <a href="/posts/delete/<%= data[i].id %>" class="btn btn-danger" onclick="return confirmation();"> <span class="text text-white fa fa-trash" ></span> </a>
                     </td>
                   </tr>
                 	<% } %>
@@ -98,8 +66,9 @@
                 <tfoot>
                 <tr>
                   <th>No</th>
-                  <th>Category Name</th>
-                  <th>Status</th>
+                  <th>Title</th>
+                  <th>Categories</th>
+                  <th>Created</th>
                   <th>Action</th>
                 </tr>
                 </tfoot>
